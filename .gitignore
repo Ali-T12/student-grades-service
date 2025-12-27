@@ -1,0 +1,12 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# XAMPP
+.htaccess
+
+# Logs
+*.log
+
+# Environment
+.env
