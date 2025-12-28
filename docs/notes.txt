@@ -1,0 +1,14 @@
+# Assignment Notes
+
+## Git
+- Initialized a local Git repository.
+- Used git add and commit to track changes.
+- Connected the project to GitHub and pushed the code.
+
+## Docker
+- Created a Dockerfile to containerize the application.
+- Built and ran the container successfully.
+
+## Notes
+- Git helps manage code versions and collaboration.
+- Docker ensures the project runs the same on any machine.
