@@ -17,12 +17,11 @@ A simple PHP & MySQL web application to manage student grades.
 ## How to Run
 
 1. Clone the repository
-2. Run:
-   docker compose build
-3. Run:
-   docker compose up -d
-4. Open your browser and go to:
-   http://localhost:8080
+2. Run `docker compose up --build`
+3. Open http://localhost:8080
+
+The database is automatically initialized using an SQL script during container startup.
+
 
 
 ## Author
