@@ -1,9 +1,10 @@
 <?php
 
-$host = getenv('DB_HOST') ?: 'localhost';
+$host = getenv('DB_HOST') ?: 'db';
 $dbname = getenv('DB_NAME') ?: 'grades_db';
 $user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') ?: '';
+$pass = getenv('DB_PASS') ?: 'root';
+
 
 try {
     $pdo = new PDO(
