@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            // UPDATE فعلي
+            // UPDATE 
             $stmt = $pdo->prepare("UPDATE grades SET student_name=?, course_name=?, grade=? WHERE id=?");
             $stmt->execute([$student, $course, $grade, (int)$id]);
 
@@ -220,23 +220,21 @@ $avg = $avgRow && $avgRow['avg_grade'] !== null ? round((float)$avgRow['avg_grad
         const msg = document.getElementById('flash-msg');
 
         if (msg) {
-            // إظهار ناعم
+            
             requestAnimationFrame(() => {
                 msg.classList.add('show');
             });
 
-            // إخفاء ناعم بعد 3 ثواني
             setTimeout(() => {
                 msg.classList.remove('show');
             }, 3000);
 
-            // إزالة msg من الرابط حتى لا تظهر عند Refresh
             setTimeout(() => {
                 const url = new URL(window.location.href);
                 url.searchParams.delete('msg');
-                url.searchParams.delete('edit'); // اختياري: لو بدك كمان تلغي وضع التعديل
+                url.searchParams.delete('edit'); 
                 window.history.replaceState({}, document.title, url.pathname + url.search);
-            }, 500); // بعد ما تظهر بقليل
+            }, 500); 
         }
     </script>
 
