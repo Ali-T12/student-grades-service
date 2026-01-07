@@ -82,7 +82,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-
+$pdo->exec("
+CREATE TABLE IF NOT EXISTS grades (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_name VARCHAR(100) NOT NULL,
+    course_name VARCHAR(100) NOT NULL,
+    grade INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+");
 $grades = $pdo->query("SELECT * FROM grades ORDER BY created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 
