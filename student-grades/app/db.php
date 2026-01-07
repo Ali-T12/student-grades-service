@@ -6,7 +6,7 @@ $user = getenv('MYSQLUSER');
 $pass = getenv('MYSQLPASSWORD');
 $port = getenv('MYSQLPORT') ?: 3306;
 
-if (!$host  !$db  !$user || !$pass) {
+if (!$host || !$db || !$user || !$pass) {
     die("Missing DB env vars (MYSQLHOST/MYSQLDATABASE/MYSQLUSER/MYSQLPASSWORD)");
 }
 
