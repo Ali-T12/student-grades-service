@@ -1,14 +1,95 @@
-# Assignment Notes
+## Overview
+This document describes the main challenges faced while deploying the Student Grades Service project to a cloud VPS environment and how they were resolved.
 
-## Git
-- Initialized a local Git repository.
-- Used git add and commit to track changes.
-- Connected the project to GitHub and pushed the code.
+---
 
-## Docker
-- Created a Dockerfile to containerize the application.
-- Built and ran the container successfully.
+## Challenges Faced
 
-## Notes
-- Git helps manage code versions and collaboration.
-- Docker ensures the project runs the same on any machine.
+### 1. Choosing a Free VPS Provider
+- Several platforms were tested (Claw Cloud, AWS EC2, Oracle Cloud).
+- Most providers required a credit card or had unstable free tiers.
+- Railway was selected because it provides a free trial with Docker support and easy GitHub integration.
+
+---
+
+### 2. Docker Not Available on Some Platforms
+- Some VPS environments did not allow installing Docker manually.
+- This made it impossible to follow the assignment requirements on those platforms.
+- Railway solved this by handling Docker builds automatically.
+
+---
+
+### 3. Apache MPM Conflict
+Error:
+
+AH00534: apache2: Configuration error: More than one MPM loaded.
+
+Cause:
+- Multiple Apache MPM modules were enabled inside the Docker image.
+
+Solution:
+- Modified the Dockerfile to enable only one MPM module.
+- Rebuilt the Docker image and redeployed the service.
+- Issue was resolved successfully.
+
+---
+
+### 4. Git Push Errors (Unrelated Histories)
+Error:
+
+fatal: refusing to merge unrelated histories
+
+Cause:
+- Local repository history did not match the remote GitHub repository.
+
+Solution:
+- Cloned the repository again from GitHub.
+- Applied fixes on the cloned version.
+- Committed and pushed changes cleanly.
+
+---
+
+### 5. Database Connection Issues
+Errors encountered:
+- Missing environment variables
+- Database host not found
+- Tables not existing
+
+Solutions:
+- Verified all required environment variables in Railway:
+  - MYSQLHOST
+  - MYSQLDATABASE
+  - MYSQLUSER
+  - MYSQLPASSWORD
+  - MYSQLPORT
+- Ensured variable names matched exactly those used in db.php.
+- Confirmed that the database tables were created using init.sql.
+
+---
+
+### 6. Difference Between Local and Cloud Networking
+- Locally, Docker Compose uses service names like db.
+- In Railway, a real database host is provided instead.
+- The application was updated to rely only on environment variables.
+
+---
+
+## Final Result
+- The application runs successfully on Railway.
+- Docker container builds and starts without errors.
+- Database connection works correctly.
+- Application is accessible via a public URL.
+
+---
+
+## Key Takeaways
+- Cloud deployment is different from local Docker usage.
+- Environment variables are critical in production.
+- Reading logs carefully is essential for debugging.
+- Railway is a good option for Docker-based student projects.
+
+---
+
+Assignment: Operating Systems Lab – Assignment #3  
+Student: Ali Jamal Isayed  
+Student ID: 120220484
