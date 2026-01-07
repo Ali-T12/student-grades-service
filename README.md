@@ -37,7 +37,7 @@ student-grades-service/
 - Docker Compose
 
 ### Steps
-```bash
+
 docker compose up --build
 
 Then open your browser at:
@@ -46,11 +46,11 @@ http://localhost:8080
 
 
 ### Steps
-```bash
+
 docker compose up --build
 Then open your browser at:
 
-arduino
+
 Copy code
 http://localhost:8080
 ☁️ Deployment on Railway (VPS-style Cloud)
